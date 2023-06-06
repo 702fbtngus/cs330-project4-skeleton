@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkPermissions() // check permissions
+//        setContentView(R.layout.activity_main)
         val i = Intent(this, FreeActivity::class.java)
         startActivity(i)
         finish()

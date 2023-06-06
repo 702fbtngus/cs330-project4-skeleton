@@ -121,7 +121,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
 
         // CameraSelector - makes assumption that we're only using the back camera
         val cameraSelector =
-            CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
+            CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_FRONT).build()
 
         // Preview. Only using the 4:3 ratio because this is the closest to our models
         preview =
@@ -203,18 +203,19 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
             // find at least one bounding box of the person
             val numPerson = results!!.count { it.categories[0].label == "person" }
             Log.d("Camera", numPerson.toString())
+            personView.text = numPerson.toString()
             val isPersonDetected: Boolean = results!!.find { it.categories[0].label == "person" } != null
             
             // change UI according to the result
-            if (isPersonDetected) {
-                personView.text = "PERSON"
-                personView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
-                personView.setTextColor(ProjectConfiguration.activeTextColor)
-            } else {
-                personView.text = "NO PERSON"
-                personView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
-                personView.setTextColor(ProjectConfiguration.idleTextColor)
-            }
+//            if (isPersonDetected) {
+//                personView.text = "PERSON"
+//                personView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
+//                personView.setTextColor(ProjectConfiguration.activeTextColor)
+//            } else {
+//                personView.text = "NO PERSON"
+//                personView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
+//                personView.setTextColor(ProjectConfiguration.idleTextColor)
+//            }
 
             // Force a redraw
             fragmentCameraBinding.overlay.invalidate()

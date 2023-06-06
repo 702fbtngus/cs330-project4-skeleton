@@ -27,6 +27,19 @@
         android:padding="5dp"/>
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/cameraFragmentContainerView"
+        android:name="com.example.pj4test.fragment.CameraFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/audioFragmentContainerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout="@layout/fragment_camera" />
+
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/audioFragmentContainerView"
         android:name="com.example.pj4test.fragment.AudioFragment"
         android:layout_width="0dp"

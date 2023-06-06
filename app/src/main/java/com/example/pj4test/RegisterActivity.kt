@@ -54,6 +54,7 @@ class RegisterActivity : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(context, InUseActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         num_person_view = findViewById<View>(R.id.register_textview_2) as TextView

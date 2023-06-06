@@ -32,7 +32,8 @@ class InUseActivity : AppCompatActivity() {
         button = findViewById<View>(R.id.in_use_button_2) as Button
         button!!.setOnClickListener {
             val intent = Intent(context, FreeActivity::class.java)
-            startActivity(intent)
+//            startActivity(intent)
+            finish()
         }
     }
 }
