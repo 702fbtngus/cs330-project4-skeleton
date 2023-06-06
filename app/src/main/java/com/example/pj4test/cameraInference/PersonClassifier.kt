@@ -28,6 +28,25 @@ import org.tensorflow.lite.task.core.BaseOptions
 import org.tensorflow.lite.task.vision.detector.Detection
 import org.tensorflow.lite.task.vision.detector.ObjectDetector
 
+//class NotifyTimer : CountDownTimer() {
+//    override fun onTick(milliesUntilFinished: Long) {
+//
+//    }
+//}
+
+//interface CountDownTimer {
+//    val millisInFuture: Long
+//    val countDownInterval: Long
+//    fun onTick(millisUntilFinished: Long) {
+//        Log.d("camera_test","seconds remaining: " + millisUntilFinished/1000)
+//    }
+//    fun onFinish() {
+//        Log.d("camera_test","done")
+//    }
+//}
+//
+//class NotifyTimer(millisInFuture: Long, countDownInterval: Long) : CountDownTimer(millisInFuture, countDownInterval)
+
 class PersonClassifier {
     // Libraries for object detection
     lateinit var objectDetector: ObjectDetector
