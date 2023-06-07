@@ -3,6 +3,7 @@ package com.example.pj4test
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -52,6 +53,20 @@ class RegisterActivity : AppCompatActivity() {
         val context = this
         button = findViewById<View>(R.id.register_button) as Button
         button.setOnClickListener {
+            val sharedPref = this.getSharedPreferences("prefs", 0)
+            val editor = sharedPref.edit()
+            val num_person = num_person_view.text.toString().toInt()
+            editor.putInt("num_using", num_person).apply()
+            var snum = ""
+            for (i: Int in 0 until num_person) {
+                snum += inputs[i]!!.editText!!.text.toString()
+                snum += ","
+            }
+//            val prev_history = sharedPref.getString("history", "")!!
+//            Log.d("sharedPref_prev", sharedPref.getString("history", "")!!)
+            editor.putString("student_nums", snum).apply()
+            val numUsing = sharedPref.getInt("num_using", 0)!!
+            Log.d("numUsing", numUsing.toString())
             val intent = Intent(context, InUseActivity::class.java)
             startActivity(intent)
             finish()
