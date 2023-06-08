@@ -8,4 +8,12 @@
         android:fontStyle="normal"
         android:fontWeight="700"
         android:font="@font/lemon_milk_bold" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/lemon_milk_pro_medium" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/lemon_milk_pro_bold" />
 </font-family>

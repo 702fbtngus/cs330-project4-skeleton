@@ -89,6 +89,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/infoFragmentContainerView"
         android:name="com.example.pj4test.fragment.InfoFragment"
+        android:visibility="invisible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
