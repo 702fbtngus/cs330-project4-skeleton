@@ -108,8 +108,8 @@ class SnapClassifier {
         if (task == null) {
             task = Timer().scheduleAtFixedRate(0, REFRESH_INTERVAL_MS) {
                 val score = inference()
-                val db = getAmplitude()
-                detectorListener?.onResults(score, db.roundToInt())
+                val result = getAmplitude()
+                detectorListener?.onResults(score, result.first.roundToInt(), result.second)
             }
         }
     }
@@ -119,7 +119,10 @@ class SnapClassifier {
         task = null
     }
 
-    fun getAmplitude(): Float {
+    val dblist = mutableListOf<Float>()
+    var token = 0
+    fun getAmplitude(): Pair<Float, Int> {
+        Log.d("size",dblist.size.toString())
         val buffer = FloatArray(recorder.channelCount * recorder.bufferSizeInFrames)
 
         // read the data into the buffer
@@ -133,13 +136,28 @@ class SnapClassifier {
 
             // Determine amplitude
             val amplitudeDb = 20 * log10(abs(amplitude))
+            dblist.add(amplitudeDb)
+            if (amplitudeDb >= 5){
+                Log.d("amp", "amp: $amplitudeDb")
+            }
+            if (dblist.size >= 150) {
+                var cnt = 0
+                for (i in dblist) {
+                    if (i >= 5) cnt++
+                }
+                Log.d("cnt", "cnt: $cnt")
+                if (cnt >= 60) token++
+                dblist.clear()
+            }
             val dbString = amplitudeDb.toString()
             Log.d("Snore DB", "dB: $dbString")
-            return amplitudeDb
+
+            Log.d("size_fin",dblist.size.toString())
+            return Pair(amplitudeDb, token)
             //TextView textAmplitude = (TextView) findViewById(R.id.tvAmplitude);
             //textAmplitude.setText(dbString);
         }
-        return 0f
+        return Pair(-20000f, 0)
     }
 
     /**
@@ -150,7 +168,7 @@ class SnapClassifier {
      * and set itself to this' detector listener
      */
     interface DetectorListener {
-        fun onResults(score: Float, db: Int)
+        fun onResults(score: Float, db: Int, token: Int)
     }
 
     /**

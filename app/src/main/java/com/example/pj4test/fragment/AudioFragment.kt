@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.pj4test.ProjectConfiguration
 import com.example.pj4test.audioInference.SnapClassifier
@@ -24,6 +25,11 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
 
     // views
     lateinit var ampView: TextView
+    lateinit var token1View: ImageView
+    lateinit var token2View: ImageView
+    lateinit var token3View: ImageView
+    lateinit var token4View: ImageView
+    lateinit var token5View: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +47,12 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
 
         ampView = fragmentAudioBinding.AmplitudeView
 
+        token1View = fragmentAudioBinding.Token1View
+        token2View = fragmentAudioBinding.Token2View
+        token3View = fragmentAudioBinding.Token3View
+        token4View = fragmentAudioBinding.Token4View
+        token5View = fragmentAudioBinding.Token5View
+
         snapClassifier = SnapClassifier()
         snapClassifier.initialize(requireContext())
         snapClassifier.setDetectorListener(this)
@@ -56,14 +68,18 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
         snapClassifier.startInferencing()
     }
 
-    override fun onResults(score: Float, db: Int) {
+    override fun onResults(score: Float, db: Int, token: Int) {
         activity?.runOnUiThread {
-            ampView.text = "%3s ".format(db)
-//            Log.d("result", "dB: ${ampView.text}")
-            if (db > 20) {
-                ampView.setTextColor(ProjectConfiguration.activeTextColor)
-            } else {
-                ampView.setTextColor(ProjectConfiguration.idleTextColor)
+            if (db != -20000) {
+                ampView.text = "%3s db".format(db)
+                Log.d("result", "token: $token")
+                when (token) {
+                    1 -> token1View.setColorFilter(ProjectConfiguration.activeColor)
+                    2 -> token2View.setColorFilter(ProjectConfiguration.activeColor)
+                    3 -> token3View.setColorFilter(ProjectConfiguration.activeColor)
+                    4 -> token4View.setColorFilter(ProjectConfiguration.activeColor)
+                    5 -> token5View.setColorFilter(ProjectConfiguration.activeColor)
+                }
             }
         }
     }

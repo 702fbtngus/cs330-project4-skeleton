@@ -49,12 +49,12 @@ class InfoFragment: Fragment(), SnapClassifier.DetectorListener {
         super.onResume()
     }
 
-    override fun onResults(score: Float, db: Int) {
+    override fun onResults(score: Float, db: Int, token: Int) {
 //        activity?.runOnUiThread {
 //            ampView.text = "%3s ".format(db)
 ////            Log.d("result", "dB: ${ampView.text}")
 //            if (db > 20) {
-//                ampView.setTextColor(ProjectConfiguration.activeTextColor)
+//                ampView.setTextColor(ProjectConfiguration.activeColor)
 //            } else {
 //                ampView.setTextColor(ProjectConfiguration.idleTextColor)
 //            }
