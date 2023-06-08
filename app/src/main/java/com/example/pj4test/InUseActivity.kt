@@ -48,6 +48,13 @@ class InUseActivity : AppCompatActivity() {
         }
     }
 
+    fun switchByToken(status: Int) {
+        val intent = Intent(this, OutActivity::class.java)
+        intent.putExtra("status", status)
+        startActivity(intent)
+        finish()
+    }
+
     fun infoFragmentCreated() {
         infoClose = findViewById<View>(R.id.info_close) as Button
         val infoLinearLayout = findViewById<View>(R.id.infoLinearLayout) as LinearLayout

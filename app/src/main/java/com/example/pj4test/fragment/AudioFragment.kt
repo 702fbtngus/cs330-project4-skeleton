@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.example.pj4test.InUseActivity
 import com.example.pj4test.ProjectConfiguration
 import com.example.pj4test.audioInference.SnapClassifier
 import com.example.pj4test.databinding.FragmentAudioBinding
@@ -74,11 +75,15 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
                 ampView.text = "%3s db".format(db)
                 Log.d("result", "token: $token")
                 when (token) {
-                    1 -> token1View.setColorFilter(ProjectConfiguration.activeColor)
+                    1 -> {token1View.setColorFilter(ProjectConfiguration.activeColor)
+                        (activity as InUseActivity).switchByToken(0)}
                     2 -> token2View.setColorFilter(ProjectConfiguration.activeColor)
                     3 -> token3View.setColorFilter(ProjectConfiguration.activeColor)
                     4 -> token4View.setColorFilter(ProjectConfiguration.activeColor)
-                    5 -> token5View.setColorFilter(ProjectConfiguration.activeColor)
+                    5 -> {
+                        token5View.setColorFilter(ProjectConfiguration.activeColor)
+//                        (activity as InUseActivity).switchByToken(0)
+                    }
                 }
             }
         }
