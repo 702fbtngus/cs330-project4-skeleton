@@ -35,7 +35,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.pj4test.ProjectConfiguration
+import com.example.pj4test.InUseActivity
 import java.util.LinkedList
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -63,11 +63,16 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
     private lateinit var cameraExecutor: ExecutorService
 
     override fun onDestroyView() {
-        _fragmentCameraBinding = null
+//        Log.d(TAG, "CameraFragment destroyed")
         super.onDestroyView()
-
+//        _fragmentCameraBinding = null
+//
         // Shut down our background executor
-        cameraExecutor.shutdown()
+        try {
+            cameraExecutor.shutdown()
+        } finally {
+
+        }
     }
 
     override fun onCreateView(
@@ -199,13 +204,13 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
                 imageHeight,
                 imageWidth
             )
-            
+
             // find at least one bounding box of the person
             val numPerson = results!!.count { it.categories[0].label == "person" }
             Log.d("Camera", numPerson.toString())
             personView.text = numPerson.toString()
             val isPersonDetected: Boolean = results!!.find { it.categories[0].label == "person" } != null
-            
+
             // change UI according to the result
 //            if (isPersonDetected) {
 //                personView.text = "PERSON"
