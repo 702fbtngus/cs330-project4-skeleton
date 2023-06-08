@@ -35,13 +35,12 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.pj4test.InUseActivity
-import java.util.LinkedList
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import com.example.pj4test.cameraInference.PersonClassifier
 import com.example.pj4test.databinding.FragmentCameraBinding
 import org.tensorflow.lite.task.vision.detector.Detection
+import java.util.*
 
 class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
     private val TAG = "CameraFragment"
@@ -50,14 +49,16 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
 
     private val fragmentCameraBinding
         get() = _fragmentCameraBinding!!
-    
+
     private lateinit var personView: TextView
-    
+    private lateinit var personTimer: TextView
+
     private lateinit var personClassifier: PersonClassifier
     private lateinit var bitmapBuffer: Bitmap
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
     private var camera: Camera? = null
+    private var vacantTime: Long? = -1
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -103,6 +104,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
         }
 
         personView = fragmentCameraBinding.PersonView
+        personTimer = fragmentCameraBinding.PersonTimer
     }
 
     // Initialize CameraX, and prepare to bind the camera use cases
@@ -206,21 +208,31 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
             )
 
             // find at least one bounding box of the person
-            val numPerson = results!!.count { it.categories[0].label == "person" }
-            Log.d("Camera", numPerson.toString())
-            personView.text = numPerson.toString()
+//            val numPerson = results!!.count { it.categories[0].label == "person" }
+//            Log.d("Camera", numPerson.toString())
+//            personView.text = numPerson.toString()
+
             val isPersonDetected: Boolean = results!!.find { it.categories[0].label == "person" } != null
 
             // change UI according to the result
-//            if (isPersonDetected) {
+            if (isPersonDetected) {
+                personView.visibility = View.INVISIBLE
+                personTimer.visibility = View.INVISIBLE
+                vacantTime = -1
 //                personView.text = "PERSON"
 //                personView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
 //                personView.setTextColor(ProjectConfiguration.activeColor)
-//            } else {
+            } else {
+                if (vacantTime!! == (-1).toLong()) {
+                    vacantTime = Date().time
+                }
+                personView.visibility = View.VISIBLE
+                personTimer.visibility = View.VISIBLE
+                personTimer.text = (10 - ((Date().time - vacantTime!!)/1000).toInt()).toString()
 //                personView.text = "NO PERSON"
 //                personView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
 //                personView.setTextColor(ProjectConfiguration.idleTextColor)
-//            }
+            }
 
             // Force a redraw
             fragmentCameraBinding.overlay.invalidate()
