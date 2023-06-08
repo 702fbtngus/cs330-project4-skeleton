@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         checkPermissions() // check permissions
 //        setContentView(R.layout.activity_main)
-        val i = Intent(this, FreeActivity::class.java)
-        startActivity(i)
+        startActivity(Intent(this, FreeActivity::class.java))
         finish()
     }
 

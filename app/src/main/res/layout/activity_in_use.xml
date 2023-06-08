@@ -87,7 +87,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/infoFragmentContainerView"
-        android:name="com.example.pj4test.fragment.InfoFragment"
+        android:name="com.example.pj4test.fragment.InUseInfoFragment"
         android:visibility="invisible"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -98,7 +98,7 @@
         android:layout_marginVertical="70dp"
         android:layout_marginHorizontal="20dp"
         android:elevation="4dp"
-        tools:layout="@layout/fragment_info"/>
+        tools:layout="@layout/fragment_info_in_use"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

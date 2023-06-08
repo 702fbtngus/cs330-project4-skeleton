@@ -18,12 +18,12 @@ import java.util.*
 class RegisterActivity : AppCompatActivity() {
     private val TAG = "RegisterActivity"
     lateinit var button: Button
-    lateinit var num_person_view: TextView
-    lateinit var person_view: TextView
-    lateinit var up_arrow: TextView
-    lateinit var down_arrow: TextView
-    lateinit var register_layout: ScrollView
-    lateinit var linear_layout: LinearLayout
+    lateinit var numPersonView: TextView
+    lateinit var personView: TextView
+    lateinit var upArrow: TextView
+    lateinit var downArrow: TextView
+    lateinit var registerLayout: ScrollView
+    lateinit var linearLayout: LinearLayout
     var inputs: MutableList<TextInputLayout?> = MutableList(8) { i: Int -> null }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -36,16 +36,16 @@ class RegisterActivity : AppCompatActivity() {
 
     fun updateLayout(n: Int) {
         if (n in 1..8) {
-            linear_layout.removeAllViews()
+            linearLayout.removeAllViews()
             for (i: Int in 0 until n) {
-                linear_layout.addView(inputs[i])
+                linearLayout.addView(inputs[i])
             }
-            num_person_view.text = n.toString()
+            numPersonView.text = n.toString()
         }
         if (n == 1) {
-            person_view.text = "person"
+            personView.text = "person"
         } else {
-            person_view.text = "people"
+            personView.text = "people"
         }
     }
 
@@ -55,10 +55,10 @@ class RegisterActivity : AppCompatActivity() {
         button.setOnClickListener {
             val sharedPref = this.getSharedPreferences("prefs", 0)
             val editor = sharedPref.edit()
-            val num_person = num_person_view.text.toString().toInt()
-            editor.putInt("num_using", num_person).apply()
+            val numPerson = numPersonView.text.toString().toInt()
+            editor.putInt("num_using", numPerson).apply()
             var snum = ""
-            for (i: Int in 0 until num_person) {
+            for (i: Int in 0 until numPerson) {
                 snum += inputs[i]!!.editText!!.text.toString()
                 snum += ","
             }
@@ -72,26 +72,32 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
 
-        num_person_view = findViewById<View>(R.id.register_textview_2) as TextView
-        person_view = findViewById<View>(R.id.register_textview_3) as TextView
-        register_layout = findViewById<View>(R.id.register_layout_2) as ScrollView
-        linear_layout = findViewById<View>(R.id.register_linear_layout) as LinearLayout
+        numPersonView = findViewById<View>(R.id.register_textview_2) as TextView
+        personView = findViewById<View>(R.id.register_textview_3) as TextView
+        registerLayout = findViewById<View>(R.id.register_layout_2) as ScrollView
+        linearLayout = findViewById<View>(R.id.register_linear_layout) as LinearLayout
         for (i: Int in 0..7) {
-            inputs[i] = linear_layout.getChildAt(i) as TextInputLayout
+            inputs[i] = linearLayout.getChildAt(i) as TextInputLayout
         }
-        up_arrow = findViewById<View>(R.id.register_up_arrow) as TextView
-        up_arrow.setOnClickListener {
-            val num_person = num_person_view.text.toString().toInt() + 1
+        upArrow = findViewById<View>(R.id.register_up_arrow) as TextView
+        upArrow.setOnClickListener {
+            val num_person = numPersonView.text.toString().toInt() + 1
             if (num_person < 9) {
                 updateLayout(num_person)
             }
         }
-        down_arrow = findViewById<View>(R.id.register_down_arrow) as TextView
-        down_arrow.setOnClickListener {
-            val num_person = num_person_view.text.toString().toInt() - 1
+        downArrow = findViewById<View>(R.id.register_down_arrow) as TextView
+        downArrow.setOnClickListener {
+            val num_person = numPersonView.text.toString().toInt() - 1
             if (num_person > 0) {
                 updateLayout(num_person)
             }
         }
+    }
+
+    fun makeWarningSeatPage() {
+        val intent = Intent(this, WarningActivity::class.java)
+        intent.putExtra("status", 0)
+        startActivity(intent)
     }
 }

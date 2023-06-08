@@ -1,5 +1,6 @@
 package com.example.pj4test
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -19,12 +20,13 @@ class InUseActivity : AppCompatActivity() {
     var button2: Button? = null
     var infoFragment: FragmentContainerView? = null
     var infoClose: Button? = null
-    var studentNames: MutableList<TextView?> = MutableList(8) { i: Int -> null }
+    var studentNums: MutableList<TextView?> = MutableList(8) { i: Int -> null }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_in_use)
+        infoFragment = findViewById<View>(R.id.infoFragmentContainerView) as FragmentContainerView
         addListenerOnButton()
         infoFragment!!.visibility = View.INVISIBLE
     }
@@ -33,7 +35,6 @@ class InUseActivity : AppCompatActivity() {
     fun addListenerOnButton() {
         val context = this
         button1 = findViewById<View>(R.id.in_use_button_1) as Button
-        infoFragment = findViewById<View>(R.id.infoFragmentContainerView) as FragmentContainerView
         button2 = findViewById<View>(R.id.in_use_button_2) as Button
         button1!!.setOnClickListener {
             infoFragment!!.visibility = View.VISIBLE
@@ -48,11 +49,19 @@ class InUseActivity : AppCompatActivity() {
         }
     }
 
-    fun switchByToken(status: Int) {
-        val intent = Intent(this, OutActivity::class.java)
-        intent.putExtra("status", status)
-        startActivity(intent)
-        finish()
+    fun switchPage(status: Int) {
+        when (status) {
+            0 -> {
+                val intent = Intent(this, VacantActivity::class.java)
+                startActivity(intent)
+            }
+            1 -> {
+                val intent = Intent(this, OutActivity::class.java)
+                intent.putExtra("cause", 0)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
     fun infoFragmentCreated() {
@@ -61,14 +70,14 @@ class InUseActivity : AppCompatActivity() {
         val sharedPref = this.getSharedPreferences("prefs", 0)
         val numUsing = sharedPref.getInt("num_using", 0)!!
         Log.d("numUsing", numUsing.toString())
-        val studentNums = sharedPref.getString("student_nums", "")!!.split(",")
+        val nums = sharedPref.getString("student_nums", "")!!.split(",")
         for (i: Int in 0 until 8) {
-            studentNames[i] = infoLinearLayout.getChildAt(i+1) as TextView
+            studentNums[i] = infoLinearLayout.getChildAt(i+1) as TextView
             if (i < numUsing) {
-                studentNames[i]!!.text = studentNums[i]
-                studentNames[i]!!.visibility = View.VISIBLE
+                studentNums[i]!!.text = nums[i]
+                studentNums[i]!!.visibility = View.VISIBLE
             } else {
-                studentNames[i]!!.visibility = View.GONE
+                studentNums[i]!!.visibility = View.GONE
             }
         }
         Log.d(TAG, "infoclose set")

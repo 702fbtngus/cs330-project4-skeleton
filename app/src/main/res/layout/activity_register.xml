@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lemon_milk_bold"
                 android:gravity="center"
-                android:text="take a seat"
+                android:text="Register"
                 android:textSize="50sp"
                 android:textColor="#70AD47"
                 android:shadowColor="#B3000000"
@@ -155,7 +155,7 @@
                 app:layout_constraintTop_toBottomOf="@id/register_textview_4">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/register_text_input_1"
+                    android:id="@+id/pin_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
@@ -355,5 +355,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/cameraFragmentContainerView"
+        android:name="com.example.pj4test.fragment.CameraFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginTop="10dp"
+        tools:layout="@layout/fragment_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

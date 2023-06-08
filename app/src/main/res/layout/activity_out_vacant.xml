@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFC000"
+    android:background="#B42222"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/warning_background"
+        android:id="@+id/out_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/warning_seat_text"
+        android:id="@+id/noisy_seat_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lemon_milk_bold"
@@ -24,16 +24,16 @@
         android:shadowDx="10.0"
         android:shadowDy="10.0"
         android:shadowRadius="10.0"
-        android:text="warning!"
-        android:textColor="#000000"
+        android:text="Anyone there?"
+        android:textColor="#FFFFFF"
         android:textSize="58sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/warning_seat_information"/>
+        app:layout_constraintBottom_toTopOf="@+id/noisy_seat_information"/>
 
     <TextView
-        android:id="@+id/warning_seat_information"
+        android:id="@+id/noisy_seat_information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lemon_milk_medium"
@@ -43,8 +43,8 @@
         android:shadowDx="7.0"
         android:shadowDy="7.0"
         android:shadowRadius="7.0"
-        android:text="Register\nbefore use"
-        android:textColor="#000000"
+        android:text="your seat is\nreturned"
+        android:textColor="#FFFFFF"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,11 +62,11 @@
         android:shadowDy="7.0"
         android:shadowRadius="7.0"
         android:text="tap to return"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/warning_seat_information"
+        app:layout_constraintTop_toBottomOf="@+id/noisy_seat_information"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 

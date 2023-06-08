@@ -76,7 +76,7 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
                 Log.d("result", "token: $token")
                 when (token) {
                     1 -> {token1View.setColorFilter(ProjectConfiguration.activeColor)
-                        (activity as InUseActivity).switchByToken(0)}
+                        (activity as InUseActivity).switchPage(0)}
                     2 -> token2View.setColorFilter(ProjectConfiguration.activeColor)
                     3 -> token3View.setColorFilter(ProjectConfiguration.activeColor)
                     4 -> token4View.setColorFilter(ProjectConfiguration.activeColor)

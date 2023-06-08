@@ -2,12 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-    <!-- Declare features -->
-    <uses-feature android:name="android.hardware.camera" />
-
-    <!-- Declare permissions -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Declare features -->
+    <uses-feature android:name="android.hardware.camera" /> <!-- Declare permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -33,24 +29,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".FreeActivity">
-        </activity>
-        <activity
-            android:name=".RegisterActivity">
-        </activity>
-        <activity
-            android:name=".InUseActivity">
-        </activity>
-        <activity
-            android:name=".VacantActivity">
-        </activity>
-        <activity
-            android:name=".WarningActivity">
-        </activity>
-        <activity
-            android:name=".OutActivity">
-        </activity>
+        <activity android:name=".FreeActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".InUseActivity" />
+        <activity android:name=".VacantActivity" />
+        <activity android:name=".WarningActivity" />
+        <activity android:name=".OutActivity" />
     </application>
 
 </manifest>

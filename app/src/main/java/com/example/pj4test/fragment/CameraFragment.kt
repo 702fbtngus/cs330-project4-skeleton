@@ -18,6 +18,7 @@ package com.example.pj4test.fragment
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,8 +34,13 @@ import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.pj4test.FreeActivity
+import com.example.pj4test.InUseActivity
+import com.example.pj4test.RegisterActivity
+import com.example.pj4test.VacantActivity
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import com.example.pj4test.cameraInference.PersonClassifier
@@ -50,6 +56,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
     private val fragmentCameraBinding
         get() = _fragmentCameraBinding!!
 
+    private lateinit var cameraContainer: ConstraintLayout
     private lateinit var personView: TextView
     private lateinit var personTimer: TextView
 
@@ -59,6 +66,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
     private var imageAnalyzer: ImageAnalysis? = null
     private var camera: Camera? = null
     private var vacantTime: Long? = -1
+    private var currentActivityName: String = ""
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -86,6 +94,19 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
         return fragmentCameraBinding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "resume")
+
+
+        // Wait for the views to be properly laid out
+        fragmentCameraBinding.viewFinder.post {
+            // Set up the camera and its use cases
+            setUpCamera()
+        }
+        resetCamera()
+    }
+
     @SuppressLint("MissingPermission")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -103,8 +124,29 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
             setUpCamera()
         }
 
+        cameraContainer = fragmentCameraBinding.cameraContainer
         personView = fragmentCameraBinding.PersonView
         personTimer = fragmentCameraBinding.PersonTimer
+        resetCamera()
+    }
+
+    fun resetCamera() {
+        vacantTime = -1
+        cameraContainer.visibility = View.INVISIBLE
+        currentActivityName = activity!!.javaClass.simpleName
+        when (currentActivityName) {
+            "FreeActivity" -> {
+                personView.text = "Please register before using"
+            }
+            "RegisterActivity" -> {
+                personView.text = "Please register before using"
+                cameraContainer.setBackgroundColor(Color.parseColor("#B0E2F0D9"))
+            }
+            "InUseActivity" -> {}
+            "VacantActivity" -> {
+                personView.text = "Please enter PIN before using"
+            }
+        }
     }
 
     // Initialize CameraX, and prepare to bind the camera use cases
@@ -215,23 +257,28 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
             val isPersonDetected: Boolean = results!!.find { it.categories[0].label == "person" } != null
 
             // change UI according to the result
-            if (isPersonDetected) {
-                personView.visibility = View.INVISIBLE
-                personTimer.visibility = View.INVISIBLE
-                vacantTime = -1
-//                personView.text = "PERSON"
-//                personView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
-//                personView.setTextColor(ProjectConfiguration.activeColor)
-            } else {
-                if (vacantTime!! == (-1).toLong()) {
-                    vacantTime = Date().time
+            when (currentActivityName) {
+                "FreeActivity" -> {
+                    if (stayedAs(isPersonDetected, 10)) {
+                        (activity as FreeActivity).makeWarningSeatPage()
+                    }
                 }
-                personView.visibility = View.VISIBLE
-                personTimer.visibility = View.VISIBLE
-                personTimer.text = (10 - ((Date().time - vacantTime!!)/1000).toInt()).toString()
-//                personView.text = "NO PERSON"
-//                personView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
-//                personView.setTextColor(ProjectConfiguration.idleTextColor)
+                "RegisterActivity" -> {
+                    if (stayedAs(isPersonDetected, 30)) {
+                        (activity as RegisterActivity).makeWarningSeatPage()
+                    }
+                }
+                "InUseActivity" -> {
+                    if (stayedAs(!isPersonDetected, 10)) {
+                        (activity as InUseActivity).switchPage(0)
+                    }
+                }
+                "VacantActivity" -> {
+                    (activity as VacantActivity).updateTime()
+                    if (stayedAs(isPersonDetected, 10)) {
+                        (activity as VacantActivity).makeWarningPINPage()
+                    }
+                }
             }
 
             // Force a redraw
@@ -239,9 +286,32 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
         }
     }
 
+    private fun stayedAs(cond: Boolean, time: Int): Boolean {
+        if (!cond) {
+//            Log.d(TAG, "Person not detected")
+            cameraContainer.visibility = View.INVISIBLE
+            vacantTime = -1
+        } else {
+//            Log.d(TAG, "Person detected")
+            if (vacantTime!! == (-1).toLong()) {
+                vacantTime = Date().time
+            }
+            cameraContainer.visibility = View.VISIBLE
+            val lastTime = time - ((Date().time - vacantTime!!)/1000).toInt()
+            if (lastTime >= 1) {
+                personTimer.text = lastTime.toString()
+            } else {
+                vacantTime = -1
+                return true
+            }
+        }
+        return false
+    }
+
     override fun onObjectDetectionError(error: String) {
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
         }
     }
+
 }

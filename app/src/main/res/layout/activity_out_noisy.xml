@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/noisy_seat_background"
+        android:id="@+id/out_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"/>

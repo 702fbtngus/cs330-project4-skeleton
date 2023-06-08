@@ -22,6 +22,10 @@ class FreeActivity : AppCompatActivity() {
         addListenerOnButton()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+    }
+
 
     fun addListenerOnButton() {
         val context = this
@@ -30,5 +34,11 @@ class FreeActivity : AppCompatActivity() {
             val intent = Intent(context, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun makeWarningSeatPage() {
+        val intent = Intent(this, WarningActivity::class.java)
+        intent.putExtra("status", 0)
+        startActivity(intent)
     }
 }

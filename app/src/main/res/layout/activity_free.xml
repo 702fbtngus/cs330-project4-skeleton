@@ -7,12 +7,24 @@
     android:background="#E2F0D9"
     tools:context=".MainActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/cameraFragmentContainerView"
+        android:name="com.example.pj4test.fragment.CameraFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginTop="10dp"
+        tools:layout="@layout/fragment_camera" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lemon_milk_bold"
         android:gravity="center"
-        android:text="free"
+        android:text="Free"
         android:textSize="90sp"
         android:textColor="#70AD47"
         android:shadowColor="#B3000000"
@@ -31,7 +43,7 @@
         android:layout_height="85dp"
         android:fontFamily="@font/lemon_milk_medium"
         android:gravity="center"
-        android:text="history"
+        android:text="History"
         android:textSize="30sp"
         android:letterSpacing="0"
         android:textColor="#548235"
@@ -48,7 +60,7 @@
         android:layout_height="85dp"
         android:fontFamily="@font/lemon_milk_medium"
         android:gravity="center"
-        android:text="Take a seat"
+        android:text="Register"
         android:textSize="30sp"
         android:letterSpacing="0"
         android:textColor="#548235"
