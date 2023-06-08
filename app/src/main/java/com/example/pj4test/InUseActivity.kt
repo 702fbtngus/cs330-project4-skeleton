@@ -1,6 +1,5 @@
 package com.example.pj4test
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -43,13 +42,13 @@ class InUseActivity : AppCompatActivity() {
             button2!!.isClickable = false
         }
         button2!!.setOnClickListener {
-            val intent = Intent(context, FreeActivity::class.java)
+//            val intent = Intent(context, FreeActivity::class.java)
 //            startActivity(intent)
             finish()
         }
     }
 
-    fun fragmentCreated() {
+    fun infoFragmentCreated() {
         infoClose = findViewById<View>(R.id.info_close) as Button
         val infoLinearLayout = findViewById<View>(R.id.infoLinearLayout) as LinearLayout
         val sharedPref = this.getSharedPreferences("prefs", 0)
