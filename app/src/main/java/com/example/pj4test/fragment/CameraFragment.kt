@@ -215,7 +215,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
 //            if (isPersonDetected) {
 //                personView.text = "PERSON"
 //                personView.setBackgroundColor(ProjectConfiguration.activeBackgroundColor)
-//                personView.setTextColor(ProjectConfiguration.activeTextColor)
+//                personView.setTextColor(ProjectConfiguration.activeColor)
 //            } else {
 //                personView.text = "NO PERSON"
 //                personView.setBackgroundColor(ProjectConfiguration.idleBackgroundColor)
