@@ -48,6 +48,9 @@
         <activity
             android:name=".WarningActivity">
         </activity>
+        <activity
+            android:name=".OutActivity">
+        </activity>
     </application>
 
 </manifest>
