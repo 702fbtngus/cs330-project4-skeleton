@@ -20,7 +20,88 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/Token1View"
+        android:src="@drawable/token_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:tint="@color/white"
+        android:shadowColor="#B3000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="7.0"
+        app:layout_constraintEnd_toStartOf="@id/Token2View"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AmplitudeView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="100dp"/>
+
+    <ImageView
+        android:id="@+id/Token2View"
+        android:src="@drawable/token_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:tint="@color/white"
+        android:shadowColor="#B3000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="7.0"
+        app:layout_constraintStart_toEndOf="@id/Token1View"
+        app:layout_constraintEnd_toStartOf="@id/Token3View"
+        app:layout_constraintTop_toBottomOf="@id/AmplitudeView"
+        app:layout_constraintTop_toTopOf="@id/Token1View"/>
+
+    <ImageView
+        android:id="@+id/Token3View"
+        android:src="@drawable/token_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:tint="@color/white"
+        android:shadowColor="#B3000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="7.0"
+        app:layout_constraintStart_toEndOf="@id/Token2View"
+        app:layout_constraintEnd_toStartOf="@id/Token4View"
+        app:layout_constraintTop_toBottomOf="@id/AmplitudeView"
+        app:layout_constraintTop_toTopOf="@id/Token1View"/>
+
+    <ImageView
+        android:id="@+id/Token4View"
+        android:src="@drawable/token_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:tint="@color/white"
+        android:shadowColor="#B3000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="7.0"
+        app:layout_constraintStart_toEndOf="@id/Token3View"
+        app:layout_constraintEnd_toStartOf="@id/Token5View"
+        app:layout_constraintTop_toBottomOf="@id/AmplitudeView"
+        app:layout_constraintTop_toTopOf="@id/Token1View"/>
+
+    <ImageView
+        android:id="@+id/Token5View"
+        android:src="@drawable/token_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:tint="@color/white"
+        android:shadowColor="#B3000000"
+        android:shadowDx="7.0"
+        android:shadowDy="7.0"
+        android:shadowRadius="7.0"
+        app:layout_constraintStart_toEndOf="@id/Token4View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AmplitudeView"
+        app:layout_constraintTop_toTopOf="@id/Token1View"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
