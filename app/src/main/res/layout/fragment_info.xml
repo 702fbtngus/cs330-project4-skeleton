@@ -226,7 +226,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lemon_milk_medium"
+                android:fontFamily="@font/lemon_milk_pro_medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:shadowColor="#B3000000"
@@ -243,7 +243,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lemon_milk_medium"
+                android:fontFamily="@font/lemon_milk_pro_medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:shadowColor="#B3000000"
@@ -260,7 +260,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lemon_milk_medium"
+                android:fontFamily="@font/lemon_milk_pro_medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:shadowColor="#B3000000"
@@ -277,7 +277,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lemon_milk_medium"
+                android:fontFamily="@font/lemon_milk_pro_medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:shadowColor="#B3000000"
@@ -294,7 +294,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/lemon_milk_medium"
+                android:fontFamily="@font/lemon_milk_pro_medium"
                 android:gravity="center"
                 android:padding="5dp"
                 android:shadowColor="#B3000000"
