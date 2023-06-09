@@ -67,6 +67,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
     private var camera: Camera? = null
     private var vacantTime: Long? = -1
     private var currentActivityName: String = ""
+    private var switchedPage: Boolean = false
 
     /** Blocking camera operations are performed using this executor */
     private lateinit var cameraExecutor: ExecutorService
@@ -104,7 +105,7 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
             // Set up the camera and its use cases
             setUpCamera()
         }
-        resetCamera()
+        resetCameraFragment()
     }
 
     @SuppressLint("MissingPermission")
@@ -127,11 +128,12 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
         cameraContainer = fragmentCameraBinding.cameraContainer
         personView = fragmentCameraBinding.PersonView
         personTimer = fragmentCameraBinding.PersonTimer
-        resetCamera()
+        resetCameraFragment()
     }
 
-    fun resetCamera() {
+    fun resetCameraFragment() {
         vacantTime = -1
+        switchedPage = false
         cameraContainer.visibility = View.INVISIBLE
         currentActivityName = activity!!.javaClass.simpleName
         when (currentActivityName) {
@@ -274,7 +276,9 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
                     }
                 }
                 "VacantActivity" -> {
-                    (activity as VacantActivity).updateTime()
+                    if (activity != null) {
+                        (activity as VacantActivity).updateTime()
+                    }
                     if (stayedAs(isPersonDetected, 10)) {
                         (activity as VacantActivity).makeWarningPINPage()
                     }
@@ -302,7 +306,10 @@ class CameraFragment : Fragment(), PersonClassifier.DetectorListener {
                 personTimer.text = lastTime.toString()
             } else {
                 vacantTime = -1
-                return true
+                if (!switchedPage) {
+                    switchedPage = true
+                    return true
+                }
             }
         }
         return false

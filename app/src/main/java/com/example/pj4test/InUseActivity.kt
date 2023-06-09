@@ -21,6 +21,7 @@ class InUseActivity : AppCompatActivity() {
     var infoFragment: FragmentContainerView? = null
     var infoClose: Button? = null
     var studentNums: MutableList<TextView?> = MutableList(8) { i: Int -> null }
+    var mySharedPref: MySharedPref = MySharedPref(this)
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,13 @@ class InUseActivity : AppCompatActivity() {
         infoFragment = findViewById<View>(R.id.infoFragmentContainerView) as FragmentContainerView
         addListenerOnButton()
         infoFragment!!.visibility = View.INVISIBLE
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (mySharedPref.getString("result") == "vacant") {
+            finish()
+        }
     }
 
 
@@ -45,6 +53,7 @@ class InUseActivity : AppCompatActivity() {
         button2!!.setOnClickListener {
 //            val intent = Intent(context, FreeActivity::class.java)
 //            startActivity(intent)
+            mySharedPref.setString("result", "returned")
             finish()
         }
     }
@@ -53,12 +62,13 @@ class InUseActivity : AppCompatActivity() {
         when (status) {
             0 -> {
                 val intent = Intent(this, VacantActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, 0)
             }
             1 -> {
                 val intent = Intent(this, OutActivity::class.java)
                 intent.putExtra("cause", 0)
-                startActivity(intent)
+                startActivityForResult(intent, 0)
+                mySharedPref.setString("result", "noisy")
                 finish()
             }
         }

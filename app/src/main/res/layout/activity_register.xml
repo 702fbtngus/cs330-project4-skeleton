@@ -155,13 +155,13 @@
                 app:layout_constraintTop_toBottomOf="@id/register_textview_4">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/pin_input"
+                    android:id="@+id/register_text_input_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -174,8 +174,7 @@
                         android:hint="e.g. 20200212"
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
-                        android:textColor="#70AD47"
-                        />
+                        android:textColor="#70AD47"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_text_input_2"
@@ -184,7 +183,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -206,7 +205,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -228,7 +227,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -243,14 +242,14 @@
                         android:textColor="#70AD47"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_text_input_5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -272,7 +271,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -294,7 +293,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -316,7 +315,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                    app:boxStrokeColor="#70AD47"
+                    app:boxStrokeColor="@color/text_input_layout_stroke_color"
                     app:boxStrokeErrorColor="#70AD47"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
@@ -333,6 +332,71 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
+            <TextView
+                android:id="@+id/register_text_enter_pin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lemon_milk_bold"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:shadowColor="#B3000000"
+                android:shadowDx="10.0"
+                android:shadowDy="10.0"
+                android:shadowRadius="10.0"
+                android:text="enter pin"
+                android:textColor="#70AD47"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/register_linear_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/pin_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_percent="0.7"
+                android:layout_marginVertical="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:boxStrokeColor="@color/text_input_layout_stroke_color"
+                app:boxStrokeWidth="5dp"
+                app:boxStrokeWidthFocused="5dp"
+                android:textColorHint="#70AD47"
+                app:hintTextColor="#70AD47"
+                app:layout_constraintTop_toBottomOf="@+id/register_text_enter_pin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lemon_milk_pro_medium"
+                    android:textSize="30sp"
+                    android:inputType="numberPassword"
+                    android:textColor="#70AD47"
+                    android:gravity="center"
+                    android:maxLength="4"
+                    android:hint="4 digits"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/register_text_enter_pin_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lemon_milk_pro_regular"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:shadowColor="#B3000000"
+                android:shadowDx="3.0"
+                android:shadowDy="3.0"
+                android:shadowRadius="3.0"
+                android:text="It is used to resume using your seat after vacancy"
+                android:textColor="#70AD47"
+                android:textSize="20sp"
+                app:layout_constraintTop_toBottomOf="@id/pin_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

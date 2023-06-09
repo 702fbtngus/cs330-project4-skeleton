@@ -24,6 +24,8 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var downArrow: TextView
     lateinit var registerLayout: ScrollView
     lateinit var linearLayout: LinearLayout
+    lateinit var pinInput: TextInputLayout
+    var mySharedPref: MySharedPref = MySharedPref(this)
     var inputs: MutableList<TextInputLayout?> = MutableList(8) { i: Int -> null }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -53,20 +55,23 @@ class RegisterActivity : AppCompatActivity() {
         val context = this
         button = findViewById<View>(R.id.register_button) as Button
         button.setOnClickListener {
-            val sharedPref = this.getSharedPreferences("prefs", 0)
-            val editor = sharedPref.edit()
+//            val sharedPref = this.getSharedPreferences("prefs", 0)
+//            val editor = sharedPref.edit()
             val numPerson = numPersonView.text.toString().toInt()
-            editor.putInt("num_using", numPerson).apply()
+//            editor.putInt("num_using", numPerson).apply()
+            mySharedPref.setInt("num_using", numPerson)
             var snum = ""
             for (i: Int in 0 until numPerson) {
                 snum += inputs[i]!!.editText!!.text.toString()
                 snum += ","
             }
-//            val prev_history = sharedPref.getString("history", "")!!
-//            Log.d("sharedPref_prev", sharedPref.getString("history", "")!!)
-            editor.putString("student_nums", snum).apply()
-            val numUsing = sharedPref.getInt("num_using", 0)!!
-            Log.d("numUsing", numUsing.toString())
+//            editor.putString("student_nums", snum).apply()
+            mySharedPref.setString("student_nums", snum)
+            Log.d(TAG, "snum: " + snum)
+            val pin = pinInput.editText!!.text.toString()
+//            editor.putString("pin", pin).apply()
+            mySharedPref.setString("pin", pin)
+//            val numUsing = sharedPref.getInt("num_using", 0)!!
             val intent = Intent(context, InUseActivity::class.java)
             startActivity(intent)
             finish()
@@ -93,6 +98,7 @@ class RegisterActivity : AppCompatActivity() {
                 updateLayout(num_person)
             }
         }
+        pinInput = findViewById<View>(R.id.pin_input) as TextInputLayout
     }
 
     fun makeWarningSeatPage() {

@@ -29,8 +29,8 @@ class OutActivity : AppCompatActivity() {
         val context = this
         background = findViewById<View>(R.id.out_background) as TextView
         background!!.setOnClickListener {
-            val intent = Intent(context, FreeActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(context, FreeActivity::class.java)
+//            startActivity(intent)
             finish()
         }
     }

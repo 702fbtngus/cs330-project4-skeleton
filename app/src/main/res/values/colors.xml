@@ -15,5 +15,7 @@
     <color name="icActive">#FFFFFFFF</color>
     <color name="icFocused">#DDFFFFFF</color>
     <color name="icPressed">#AAFFFFFF</color>
-    <color name="mtrl_textinput_default_box_stroke_color">#fff</color>
+    <color name="history_returned">#FFC000</color>
+    <color name="history_vacant">#ED7D31</color>
+    <color name="history_noisy">#C70F0F</color>
 </resources>

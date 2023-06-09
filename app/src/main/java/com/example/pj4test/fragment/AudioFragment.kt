@@ -23,6 +23,7 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
 
     // classifiers
     lateinit var snapClassifier: SnapClassifier
+    private var switchedPage: Boolean = false
 
     // views
     lateinit var ampView: TextView
@@ -67,6 +68,7 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
     override fun onResume() {
         super.onResume()
         snapClassifier.startInferencing()
+        switchedPage = false
     }
 
     override fun onResults(score: Float, db: Int, token: Int) {
@@ -75,14 +77,19 @@ class AudioFragment: Fragment(), SnapClassifier.DetectorListener {
                 ampView.text = "%3s db".format(db)
                 Log.d("result", "token: $token")
                 when (token) {
-                    1 -> {token1View.setColorFilter(ProjectConfiguration.activeColor)
-                        (activity as InUseActivity).switchPage(0)}
+                    1 -> {
+                        token1View.setColorFilter(ProjectConfiguration.activeColor)
+//                        (activity as InUseActivity).switchPage(1)
+                    }
                     2 -> token2View.setColorFilter(ProjectConfiguration.activeColor)
                     3 -> token3View.setColorFilter(ProjectConfiguration.activeColor)
                     4 -> token4View.setColorFilter(ProjectConfiguration.activeColor)
                     5 -> {
                         token5View.setColorFilter(ProjectConfiguration.activeColor)
-//                        (activity as InUseActivity).switchByToken(0)
+                        if (!switchedPage) {
+                            switchedPage = true
+                            (activity as InUseActivity).switchPage(1)
+                        }
                     }
                 }
             }
