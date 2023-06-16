@@ -162,11 +162,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -174,7 +175,8 @@
                         android:hint="e.g. 20200212"
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
-                        android:textColor="#70AD47"/>
+                        android:textColor="#70AD47"
+                        android:maxLength="8"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_text_input_2"
@@ -184,11 +186,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -196,6 +199,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -206,11 +210,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -218,6 +223,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -228,11 +234,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -240,6 +247,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -250,11 +258,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -262,6 +271,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -272,11 +282,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -284,6 +295,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -294,11 +306,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -306,6 +319,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -316,11 +330,12 @@
                     android:layout_marginVertical="5dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                     app:boxStrokeColor="@color/text_input_layout_stroke_color"
-                    app:boxStrokeErrorColor="#70AD47"
+                    app:boxStrokeErrorColor="#D00000"
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:hintTextColor="#70AD47"
-                    android:textColorHint="#70AD47">
+                    android:textColorHint="#70AD47"
+                    app:errorEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -328,6 +343,7 @@
                         android:textSize="20sp"
                         android:inputType="numberDecimal"
                         android:textColor="#70AD47"
+                        android:maxLength="8"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -365,7 +381,8 @@
                 app:hintTextColor="#70AD47"
                 app:layout_constraintTop_toBottomOf="@+id/register_text_enter_pin"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:errorEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -411,13 +428,15 @@
         android:text="start"
         android:textSize="30sp"
         android:letterSpacing="0"
-        android:textColor="#548235"
-        android:backgroundTint="#C5E0B4"
+        android:textColor="@color/button_text_color"
+        android:backgroundTint="@color/button_back_color"
         android:layout_marginHorizontal="15dp"
         android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:enabled="false"
+        />
 
 
     <androidx.fragment.app.FragmentContainerView

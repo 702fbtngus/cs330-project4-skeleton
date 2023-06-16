@@ -3,6 +3,8 @@ package com.example.pj4test
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -11,6 +13,9 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
@@ -51,6 +56,23 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    fun updateButton() {
+        val num = numPersonView.text!!.toString().toInt()
+        for (i: Int in 0 until num) {
+            inputs[i] = linearLayout.getChildAt(i) as TextInputLayout
+            val et = inputs[i]!!.editText!!
+            if (et.text!!.length != 8) {
+                button.isEnabled = false
+                return
+            }
+        }
+        if (pinInput!!.editText!!.text!!.length != 4) {
+            button.isEnabled = false
+            return
+        }
+        button.isEnabled = true
+    }
+
     fun addListeners() {
         val context = this
         button = findViewById<View>(R.id.register_button) as Button
@@ -83,6 +105,21 @@ class RegisterActivity : AppCompatActivity() {
         linearLayout = findViewById<View>(R.id.register_linear_layout) as LinearLayout
         for (i: Int in 0..7) {
             inputs[i] = linearLayout.getChildAt(i) as TextInputLayout
+            val et = inputs[i]!!.editText!!
+            et.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int ) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    if (et.text!!.isEmpty()) {
+                        inputs[i]!!.error = "Please enter student ID"
+                    } else if (et.text!!.length != 8) {
+                        inputs[i]!!.error = "Student ID should be 8 digits"
+                    } else {
+                        inputs[i]!!.error = null
+                    }
+                    updateButton()
+                }
+            })
         }
         upArrow = findViewById<View>(R.id.register_up_arrow) as TextView
         upArrow.setOnClickListener {
@@ -90,6 +127,7 @@ class RegisterActivity : AppCompatActivity() {
             if (num_person < 9) {
                 updateLayout(num_person)
             }
+            updateButton()
         }
         downArrow = findViewById<View>(R.id.register_down_arrow) as TextView
         downArrow.setOnClickListener {
@@ -97,8 +135,24 @@ class RegisterActivity : AppCompatActivity() {
             if (num_person > 0) {
                 updateLayout(num_person)
             }
+            updateButton()
         }
         pinInput = findViewById<View>(R.id.pin_input) as TextInputLayout
+        val et = pinInput.editText!!
+        et.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int ) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (et.text!!.isEmpty()) {
+                    pinInput.error = "Please enter PIN"
+                } else if (et.text!!.length != 4) {
+                    pinInput.error = "PIN should be 4 digits"
+                } else {
+                    pinInput.error = null
+                }
+                updateButton()
+            }
+        })
     }
 
     fun makeWarningSeatPage() {
