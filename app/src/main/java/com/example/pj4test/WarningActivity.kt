@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.media.MediaPlayer
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
@@ -13,6 +14,7 @@ import java.util.*
 class WarningActivity : AppCompatActivity() {
     private val TAG = "WarningActivity"
     var background: TextView? = null
+    var mediaPlayer: MediaPlayer? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +28,13 @@ class WarningActivity : AppCompatActivity() {
     }
 
     fun addListenerOnView() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.clock_tick);
+        mediaPlayer?.isLooping = true;
+        mediaPlayer?.start();
         val context = this
         background = findViewById<View>(R.id.warning_background) as TextView
         background!!.setOnClickListener {
+            mediaPlayer?.stop()
             finish()
         }
     }

@@ -285,7 +285,7 @@
                 android:shadowDx="7.0"
                 android:shadowDy="7.0"
                 android:shadowRadius="7.0"
-                android:text="Also, if a seat is left with no one for 30 minutes, similarly, the users will be 'expelled'."
+                android:text="Also, if a seat is left with no one for 15 minutes, similarly, the users will be 'expelled'."
                 android:textColor="#FF4141"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
